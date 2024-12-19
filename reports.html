@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHU Mart - Reports</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-blue-700 text-white p-4 flex flex-col sm:flex-row justify-between items-center sm:items-stretch">
+        <h1 class="text-2xl font-bold mb-4 sm:mb-0">SHU Mart</h1>
+        <ul class="flex flex-col sm:flex-row sm:space-x-6 w-full sm:w-auto space-y-2 sm:space-y-0 items-center">
+            <li><a href="dashboard.html" class="hover:text-gray-200">Dashboard</a></li>
+            <li><a href="inventory.html" class="hover:text-gray-200">Inventory</a></li>
+            <li><a href="addproduct.html" class="hover:text-gray-200">Add Product</a></li>
+            <li><a href="reports.html" class="hover:text-gray-200">Reports</a></li>
+            <li><a href="users.html" class="hover:text-gray-200">Users</a></li>
+            <li><a href="index.html" class="hover:text-red-300">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="p-4 sm:p-8">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Sales Reports</h2>
+        <div class="bg-white p-6 sm:p-8 rounded-lg shadow-md max-w-4xl mx-auto">
+            <canvas id="salesChart"></canvas>
+        </div>
+    </main>
+
+    <script>
+        const ctx = document.getElementById('salesChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                datasets: [{
+                    label: 'Sales Data',
+                    data: [500, 800, 400, 900],
+                    borderColor: 'rgba(54, 162, 235, 0.8)',
+                    backgroundColor: 'rgba(54, 162, 235, 0.1)',
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHU Mart - Inventory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-blue-700 text-white p-4 flex flex-col sm:flex-row justify-between items-center sm:items-stretch">
+        <h1 class="text-2xl font-bold mb-4 sm:mb-0">SHU Mart</h1>
+        <ul class="flex flex-col sm:flex-row sm:space-x-6 w-full sm:w-auto space-y-2 sm:space-y-0 items-center">
+            <li><a href="dashboard.html" class="hover:text-gray-200">Dashboard</a></li>
+            <li><a href="inventory.html" class="hover:text-gray-200">Inventory</a></li>
+            <li><a href="addproduct.html" class="hover:text-gray-200">Add Product</a></li>
+            <li><a href="reports.html" class="hover:text-gray-200">Reports</a></li>
+            <li><a href="users.html" class="hover:text-gray-200">Users</a></li>
+            <li><a href="index.html" class="hover:text-red-300">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="p-4 sm:p-8">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Product Inventory</h2>
+        <div class="overflow-x-auto bg-white rounded-lg shadow-md">
+            <table class="w-full min-w-max">
+                <thead>
+                    <tr class="bg-blue-600 text-white">
+                        <th class="p-4 text-left">Product Name</th>
+                        <th class="p-4 text-left">Quantity</th>
+                        <th class="p-4 text-left">Price</th>
+                        <th class="p-4 text-left">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="productTable">
+                    <!-- Data will be populated dynamically -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script>
+        const products = [
+            { name: "Surgical Gloves", quantity: 200, price: "$10" },
+            { name: "Face Masks", quantity: 500, price: "$5" },
+            { name: "Thermometers", quantity: 150, price: "$15" },
+            { name: "Blood Pressure Monitor", quantity: 50, price: "$45" },
+            { name: "Stethoscope", quantity: 75, price: "$30" },
+            { name: "Oxygen Cylinder", quantity: 20, price: "$200" },
+            { name: "Hand Sanitizer", quantity: 300, price: "$7" },
+            { name: "Bandages", quantity: 400, price: "$2" },
+            { name: "Digital Weighing Scale", quantity: 60, price: "$25" },
+            { name: "Pulse Oximeter", quantity: 100, price: "$20" },
+            { name: "IV Stand", quantity: 35, price: "$50" },
+            { name: "Wheelchair", quantity: 15, price: "$150" },
+            { name: "Hospital Bed", quantity: 10, price: "$500" },
+            { name: "Surgical Scissors", quantity: 120, price: "$12" },
+            { name: "Disinfectant Wipes", quantity: 250, price: "$8" },
+            { name: "Crutches", quantity: 40, price: "$30" },
+            { name: "Therapeutic Mattresses", quantity: 25, price: "$350" },
+            { name: "Glucometer", quantity: 80, price: "$25" },
+            { name: "Nebulizer Machine", quantity: 45, price: "$60" },
+            { name: "First Aid Kits", quantity: 90, price: "$20" }
+        ];
+
+        const productTable = document.getElementById("productTable");
+
+        products.forEach(product => {
+            const row = document.createElement("tr");
+            row.classList.add("border-b");
+
+            row.innerHTML = `
+                <td class="p-4 text-gray-700">${product.name}</td>
+                <td class="p-4 text-gray-700">${product.quantity}</td>
+                <td class="p-4 text-gray-700">${product.price}</td>
+                <td class="p-4">
+                    <button class="bg-green-500 text-white px-3 sm:px-4 py-2 rounded hover:bg-green-600">Edit</button>
+                    <button class="bg-red-500 text-white px-3 sm:px-4 py-2 rounded hover:bg-red-600 ml-2">Delete</button>
+                </td>
+            `;
+
+            productTable.appendChild(row);
+        });
+    </script>
+
+    <script src="app.js"></script>
+</body>
+</html>
